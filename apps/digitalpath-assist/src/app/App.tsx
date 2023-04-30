@@ -7,23 +7,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './features/Auth/signIn/ui/LoginScreen';
 import ActivateAccountScreen from './features/Auth/activateAccount/ui/ActivateAccountScreen';
 import AccountResetScreen from './features/Auth/passwordReset/ui/AccountReset';
-import DashboardScreen from './features/Dashboard/dashboard/ui/DashboardScreen';
+import DashboardScreen from './features/Dashboard/home/ui/HomeScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-function HomeScreen({ navigation }) {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView
-        style={{ flex: 1, alignItems: 'center', backgroundColor: 'red' }}
-      >
-        <View>
-          <Text>Home Screen</Text>
-          <CustomButton />
-        </View>
-      </SafeAreaView>
-    </>
-  );
-}
+import ChatScreen from './features/Dashboard/chat/ui/ChatScreen';
+import ProfileScreen from './features/Dashboard/profile/ui/ProfileScreen';
+import MoreScreen from './features/Dashboard/more/ui/MoreScreen';
+import HomeScreen from './features/Dashboard/home/ui/HomeScreen';
+import ClaimScreen from './features/Dashboard/claims/ui/ClaimsScreen';
 
 function DetailsScreen({ navigation }) {
   return (
@@ -37,19 +28,29 @@ function DetailsScreen({ navigation }) {
 }
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {/* <Stack.Screen name="Login" component={LoginScreen} />
+      {/* <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen
           name="ActivateAccount"
           component={ActivateAccountScreen}
         />
-        <Stack.Screen name="AccountReset" component={AccountResetScreen} /> */}
-        <Stack.Screen name="Dashboaard" component={DashboardScreen} />
-      </Stack.Navigator>
+        <Stack.Screen name="AccountReset" component={AccountResetScreen} />
+
+      </Stack.Navigator> */}
+
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Claims" component={ClaimScreen} />
+        <Tab.Screen name="Chat" component={ChatScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen name="More" component={MoreScreen} />
+        {/* <Tab.Screen name="Claims" component={ClaimsScreen} /> */}
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
