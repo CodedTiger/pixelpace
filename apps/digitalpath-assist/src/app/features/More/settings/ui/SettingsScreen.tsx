@@ -1,11 +1,10 @@
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { ImageBackground, SafeAreaView, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { Image } from 'react-native';
 import { Button, Divider, List, Text, TextInput } from 'react-native-paper';
 import { StatusBar } from 'react-native';
-import { ImageBackground } from 'react-native';
 
-const ChatScreen = () => {
+const SettingsScreen = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -24,25 +23,37 @@ const ChatScreen = () => {
               }}
             >
               <Text variant="titleMedium" style={{ color: 'white' }}>
-                Chat
+                About
               </Text>
             </View>
             <View style={{ padding: 16 }}>
               <Text variant="headlineMedium" style={{ color: 'white' }}>
-                Start a chart with a case manager now.
+                All you need to know about your app.
               </Text>
             </View>
           </ImageBackground>
         </View>
         <View style={{ flex: 1, marginTop: 0 }}>
           <List.Item
-            title="Live Chat"
+            title="About us"
             description={null}
             right={(props) => <List.Icon {...props} icon="chevron-right" />}
           />
           <Divider />
           <List.Item
-            title="Chat History"
+            title="Product info & terms"
+            description={null}
+            right={(props) => <List.Icon {...props} icon="chevron-right" />}
+          />
+          <Divider />
+          <List.Item
+            title="Help"
+            description={null}
+            right={(props) => <List.Icon {...props} icon="chevron-right" />}
+          />
+          <Divider />
+          <List.Item
+            title="Settings"
             description={null}
             right={(props) => <List.Icon {...props} icon="chevron-right" />}
           />
@@ -53,6 +64,6 @@ const ChatScreen = () => {
   );
 };
 
-export default ChatScreen;
+export default SettingsScreen;
 
 const styles = StyleSheet.create({});

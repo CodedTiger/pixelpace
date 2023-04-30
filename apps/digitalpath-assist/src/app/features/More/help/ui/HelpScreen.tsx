@@ -4,7 +4,7 @@ import { Image } from 'react-native';
 import { Button, Divider, List, Text, TextInput } from 'react-native-paper';
 import { StatusBar } from 'react-native';
 
-const ClaimScreen = () => {
+const HelpScreen = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -23,25 +23,37 @@ const ClaimScreen = () => {
               }}
             >
               <Text variant="titleMedium" style={{ color: 'white' }}>
-                Claims
+                About
               </Text>
             </View>
             <View style={{ padding: 16 }}>
               <Text variant="headlineMedium" style={{ color: 'white' }}>
-                Submit your claim with absolute ease.
+                All you need to know about your app.
               </Text>
             </View>
           </ImageBackground>
         </View>
         <View style={{ flex: 1, marginTop: 0 }}>
           <List.Item
-            title="Self service claims portal"
+            title="About us"
             description={null}
             right={(props) => <List.Icon {...props} icon="chevron-right" />}
           />
           <Divider />
           <List.Item
-            title="New fastrack claim"
+            title="Product info & terms"
+            description={null}
+            right={(props) => <List.Icon {...props} icon="chevron-right" />}
+          />
+          <Divider />
+          <List.Item
+            title="Help"
+            description={null}
+            right={(props) => <List.Icon {...props} icon="chevron-right" />}
+          />
+          <Divider />
+          <List.Item
+            title="Settings"
             description={null}
             right={(props) => <List.Icon {...props} icon="chevron-right" />}
           />
@@ -52,6 +64,6 @@ const ClaimScreen = () => {
   );
 };
 
-export default ClaimScreen;
+export default HelpScreen;
 
 const styles = StyleSheet.create({});

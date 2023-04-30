@@ -4,7 +4,7 @@ import { Image } from 'react-native';
 import { Button, Divider, List, Text, TextInput } from 'react-native-paper';
 import { StatusBar } from 'react-native';
 
-const ProfileScreen = () => {
+const ProductInfoScreen = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -23,37 +23,37 @@ const ProfileScreen = () => {
               }}
             >
               <Text variant="titleMedium" style={{ color: 'white' }}>
-                Profile
+                ProductInfoScreen
               </Text>
             </View>
             <View style={{ padding: 16 }}>
               <Text variant="headlineMedium" style={{ color: 'white' }}>
-                All your important information at your fingertips.
+                All you need to know about your app.
               </Text>
             </View>
           </ImageBackground>
         </View>
         <View style={{ flex: 1, marginTop: 0 }}>
           <List.Item
-            title="Personal details"
+            title="About us"
             description={null}
             right={(props) => <List.Icon {...props} icon="chevron-right" />}
           />
           <Divider />
           <List.Item
-            title="Policies"
+            title="Product info & terms"
             description={null}
             right={(props) => <List.Icon {...props} icon="chevron-right" />}
           />
           <Divider />
           <List.Item
-            title="Drivers licenses"
+            title="Help"
             description={null}
             right={(props) => <List.Icon {...props} icon="chevron-right" />}
           />
           <Divider />
           <List.Item
-            title="Vehicle licenses"
+            title="Settings"
             description={null}
             right={(props) => <List.Icon {...props} icon="chevron-right" />}
           />
@@ -64,6 +64,6 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export default ProductInfoScreen;
 
 const styles = StyleSheet.create({});
