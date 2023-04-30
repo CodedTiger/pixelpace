@@ -1,22 +1,20 @@
-import * as React from 'react';
-import { Image } from 'react-native';
 import { StyleSheet, View } from 'react-native';
+import React from 'react';
+import { Image } from 'react-native';
 import { Button, Text, TextInput } from 'react-native-paper';
-import Svg, { Path } from 'react-native-svg';
-export interface ButtonProps {}
 
-export const CustomButton = (props: ButtonProps) => {
+const DashboardScreen = () => {
   return (
     <View style={{ flex: 1, padding: 16 }}>
       <View style={{ flex: 3 }}>
         <View style={{ alignItems: 'center', marginTop: 16 }}>
           <Image
-            source={require('../../assets/images/app-logo.png')}
+            source={require('../../../../assets/images/app-logo.png')}
             style={{ width: 170, height: 170 }}
           />
         </View>
         <View style={{ alignItems: 'center', padding: 16 }}>
-          <Text variant="headlineSmall">Login</Text>
+          <Text variant="headlineSmall">DashboardScreen</Text>
           <Text variant="bodyMedium">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor
@@ -54,19 +52,22 @@ export const CustomButton = (props: ButtonProps) => {
       <View
         style={{
           alignItems: 'center',
-          padding: 16,
           marginBottom: 16,
         }}
       >
-        <Text variant="bodyMedium">Dont have an account ? Activate</Text>
+        <View style={{ marginVertical: 16 }}>
+          <Text variant="bodyMedium">Dont have an account ? Activate</Text>
+        </View>
+        <View style={{ justifyContent: 'center' }}>
+          <Text variant="bodySmall">
+            An Authorised Financial Service Provider
+          </Text>
+        </View>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: { paddingTop: 5, paddingBottom: 10 },
-  text: { fontSize: 24, fontWeight: '500', color: '#45bc98' },
-});
+export default DashboardScreen;
 
-export default CustomButton;
+const styles = StyleSheet.create({});
