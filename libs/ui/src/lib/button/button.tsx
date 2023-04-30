@@ -1,16 +1,24 @@
-import React from 'react';
+import * as React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import { Button } from 'react-native-paper';
 
-import { View, Text } from 'react-native';
-
-/* eslint-disable-next-line */
 export interface ButtonProps {}
 
-export function Button(props: ButtonProps) {
+export const CustomButton = (props: ButtonProps) => {
   return (
-    <View>
-      <Text>Welcome to button!</Text>
-    </View>
+    <Button
+      icon="camera"
+      mode="contained"
+      onPress={() => console.log('Pressed')}
+    >
+      Press me
+    </Button>
   );
-}
+};
 
-export default Button;
+const styles = StyleSheet.create({
+  container: { paddingTop: 5, paddingBottom: 10 },
+  text: { fontSize: 24, fontWeight: '500', color: '#45bc98' },
+});
+
+export default CustomButton;

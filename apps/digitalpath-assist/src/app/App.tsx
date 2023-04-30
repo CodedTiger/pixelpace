@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import { Heading } from '@pixelpace/ui';
+import { CustomButton, Heading } from '@pixelpace/ui';
 import React from 'react';
 import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,6 +9,7 @@ function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
+      <CustomButton />
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Details')}
