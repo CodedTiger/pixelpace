@@ -39,24 +39,28 @@ const ProfileScreen = ({ navigation }) => {
               title="Personal details"
               description={null}
               right={(props) => <List.Icon {...props} icon="chevron-right" />}
+              onPress={() => navigation.navigate('PersonalDetails')}
             />
             <Divider />
             <List.Item
               title="Policies"
               description={null}
               right={(props) => <List.Icon {...props} icon="chevron-right" />}
+              onPress={() => navigation.navigate('Policies')}
             />
             <Divider />
             <List.Item
               title="Drivers licenses"
               description={null}
               right={(props) => <List.Icon {...props} icon="chevron-right" />}
+              onPress={() => navigation.navigate('DriversLicense')}
             />
             <Divider />
             <List.Item
               title="Vehicle licenses"
               description={null}
               right={(props) => <List.Icon {...props} icon="chevron-right" />}
+              onPress={() => navigation.navigate('VehicleLicense')}
             />
             <Divider />
           </View>

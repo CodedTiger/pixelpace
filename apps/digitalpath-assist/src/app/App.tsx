@@ -20,6 +20,16 @@ import ProductInfoScreen from './features/More/productInfo/ui/ProductInfoScreen'
 import HelpScreen from './features/More/help/ui/HelpScreen';
 import SettingsScreen from './features/More/settings/ui/SettingsScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import VehicleLicenseScreen from './features/Profile/vehicleLicense/ui/license/VehicleLicenseScreen';
+import DriveLicenseScreen from './features/Profile/driversLicense/ui/license/DriverLicenseScreen';
+import PoliciesScreen from './features/Profile/policies/ui/policies/PoliciesScreen';
+import PersonalDetailScreen from './features/Profile/personalDetails/ui/PersonalDetailScreen';
+import VehicleDetailScreen from './features/Profile/vehicleLicense/ui/detail/VehicleDetailScreen';
+import VehicleLicenseScannerScreen from './features/Profile/vehicleLicense/ui/scanner/VehicleLicenseScannerScreen';
+import DriverDetailScreen from './features/Profile/driversLicense/ui/detail/DriverDetailScreen';
+import DriverLicenseScannerScreen from './features/Profile/driversLicense/ui/scanner/DriverLicenseScannerScreen';
+import PolicyCategoryScreen from './features/Profile/policies/ui/category/PolicyCategoryScreen';
+import PolicyDetailScreen from './features/Profile/policies/ui/detail/PolicyDetailScreen';
 
 function Dashboard() {
   return (
@@ -56,6 +66,38 @@ export const App = () => {
           <Stack.Screen name="ProductInfo" component={ProductInfoScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen name="Help" component={HelpScreen} />
+          <Stack.Screen
+            name="PersonalDetails"
+            component={PersonalDetailScreen}
+          />
+          <Stack.Screen name="Policies" component={PoliciesScreen} />
+          <Stack.Screen
+            name="PolicyCategory"
+            component={PolicyCategoryScreen}
+          />
+          <Stack.Screen name="PolicyDetail" component={PolicyDetailScreen} />
+
+          <Stack.Screen name="DriversLicense" component={DriveLicenseScreen} />
+          <Stack.Screen
+            name="VehicleLicense"
+            component={VehicleLicenseScreen}
+          />
+          <Stack.Screen
+            name="VehicleLicenseDetail"
+            component={VehicleDetailScreen}
+          />
+          <Stack.Screen
+            name="VehicleLicenseScanner"
+            component={VehicleLicenseScannerScreen}
+          />
+          <Stack.Screen
+            name="DriverLicenseDetail"
+            component={DriverDetailScreen}
+          />
+          <Stack.Screen
+            name="DriverLicenseScanner"
+            component={DriverLicenseScannerScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

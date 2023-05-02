@@ -1,22 +1,15 @@
 import { ImageBackground, SafeAreaView, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { Image } from 'react-native';
-import {
-  Button,
-  Divider,
-  List,
-  Switch,
-  Text,
-  TextInput,
-} from 'react-native-paper';
+import { Button, Divider, List, Text, TextInput } from 'react-native-paper';
 import { StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const SettingsScreen = ({ navigation }) => {
+const PolicyCategoryScreen = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   return (
     <ImageBackground
-      source={require('../../../../assets/images/backgrounds/star-mask.png')}
+      source={require('../../../../../assets/images/backgrounds/star-mask.png')}
       resizeMode="repeat"
       style={{ flex: 1, marginTop: -1 }}
     >
@@ -31,29 +24,25 @@ const SettingsScreen = ({ navigation }) => {
             }}
           >
             <Text variant="titleMedium" style={{ color: 'white' }}>
-              Settings
+              My Policies
             </Text>
-          </View>
-          <View style={{ alignItems: 'center', marginTop: 0 }}>
-            <Image
-              source={require('../../../../assets/images/app-logo.png')}
-              style={{ width: 80, height: 80 }}
-            />
           </View>
         </View>
       </SafeAreaView>
       <View style={{ flex: 1, marginTop: 0, backgroundColor: 'white' }}>
         <View style={{ flex: 1, marginTop: 0 }}>
           <List.Item
-            title="Roadside assist"
-            description="Keep me logged in"
-            right={(props) => <Switch />}
+            title="Household contents"
+            right={(props) => <List.Icon {...props} icon="chevron-right" />}
+            left={(props) => <List.Icon {...props} icon="car-outline" />} // card-account-details-outline
+            onPress={() => navigation.navigate('PolicyDetail')}
           />
           <Divider />
           <List.Item
-            title="Version of App"
-            description="3.2.1"
-            onPress={() => navigation.navigate('ProductInfo')}
+            title="Motor"
+            right={(props) => <List.Icon {...props} icon="chevron-right" />}
+            left={(props) => <List.Icon {...props} icon="car-outline" />}
+            onPress={() => navigation.navigate('PolicyDetail')}
           />
           <Divider />
         </View>
@@ -62,6 +51,6 @@ const SettingsScreen = ({ navigation }) => {
   );
 };
 
-export default SettingsScreen;
+export default PolicyCategoryScreen;
 
 const styles = StyleSheet.create({});
