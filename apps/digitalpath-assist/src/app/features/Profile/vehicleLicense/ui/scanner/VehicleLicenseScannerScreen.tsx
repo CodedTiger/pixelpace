@@ -1,5 +1,12 @@
-import { ImageBackground, SafeAreaView, StyleSheet, View } from 'react-native';
-import React from 'react';
+import {
+  ImageBackground,
+  Linking,
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
 import { Image } from 'react-native';
 import {
   Avatar,
@@ -11,52 +18,190 @@ import {
 } from 'react-native-paper';
 import { StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Camera, useCameraDevices } from 'react-native-vision-camera';
 
 const VehicleLicenseScannerScreen = ({ navigation }) => {
-  const insets = useSafeAreaInsets();
-  return (
-    <ImageBackground
-      source={require('../../../../../assets/images/backgrounds/star-mask.png')}
-      resizeMode="repeat"
-      style={{ flex: 1, marginTop: -1 }}
-    >
-      <StatusBar barStyle="light-content" />
-      <SafeAreaView style={{ flex: 0.2, padding: 16 }}>
-        <View style={{ flex: 1 }}>
-          <View
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: 16,
-            }}
-          >
-            <Text variant="titleMedium" style={{ color: 'white' }}>
-              Scan
-            </Text>
-          </View>
-        </View>
-      </SafeAreaView>
+  const camera = useRef(null);
+  const devices = useCameraDevices();
+  const device = devices.back;
 
-      <View style={{ flex: 1, marginTop: 0, backgroundColor: 'white' }}>
-        <View style={{ alignItems: 'center', marginTop: -35 }}>
-          <Avatar.Image
-            size={60}
-            source={require('../../../../../assets/images/app-logo.png')}
+  const [showCamera, setShowCamera] = useState(true);
+  const [imageSource, setImageSource] = useState('');
+
+  useEffect(() => {
+    async function getPermission() {
+      const newCameraPermission = await Camera.requestCameraPermission();
+      console.log(newCameraPermission);
+    }
+    getPermission();
+  }, []);
+
+  const capturePhoto = async () => {
+    if (camera.current !== null) {
+      const photo = await camera.current.takePhoto({});
+      setImageSource(photo.path);
+      setShowCamera(false);
+      console.log(photo.path);
+    }
+  };
+
+  if (device == null) {
+    return <Text>Camera not available</Text>;
+  }
+  return (
+    <View style={styles.container}>
+      {showCamera ? (
+        <>
+          <Camera
+            ref={camera}
+            // style={StyleSheet.absoluteFill}
+            style={{
+              width: '100%',
+              height: '30%',
+              borderColor: 'white',
+              borderWidth: 5,
+            }}
+            device={device}
+            isActive={showCamera}
+            photo={true}
           />
-        </View>
-        <View style={{ flex: 1 }}>
-          <View style={{ alignItems: 'center', marginVertical: 16 }}>
-            <Text variant="titleMedium" style={{ color: 'black' }}>
-              VW Polojj
-            </Text>
+          <View style={{ alignItems: 'center', padding: 16 }}>
+            <View style={{ flexDirection: 'row' }}>
+              <Text
+                variant="bodyMedium"
+                style={{ color: 'white', textAlign: 'center', marginLeft: 5 }}
+              >
+                In order to scan the barcode on license. Place the card in the
+                frame, Avoid glare on the photo and Make sure all the focus is
+                clear
+              </Text>
+            </View>
           </View>
-          <Divider />
-        </View>
-      </View>
-    </ImageBackground>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={styles.camButton}
+              onPress={() => capturePhoto()}
+            />
+          </View>
+        </>
+      ) : (
+        <>
+          {imageSource !== '' ? (
+            <Image
+              style={styles.image}
+              source={{
+                uri: `file://'${imageSource}`,
+              }}
+            />
+          ) : null}
+
+          <View style={styles.backButton}>
+            <TouchableOpacity
+              style={{
+                backgroundColor: 'rgba(0,0,0,0.2)',
+                padding: 10,
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 10,
+                borderWidth: 2,
+                borderColor: '#fff',
+                width: 100,
+              }}
+              onPress={() => setShowCamera(true)}
+            >
+              <Text style={{ color: 'white', fontWeight: '500' }}>Back</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.buttonContainer}>
+            <View style={styles.buttons}>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: '#fff',
+                  padding: 10,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: 10,
+                  borderWidth: 2,
+                  borderColor: '#77c3ec',
+                }}
+                onPress={() => setShowCamera(true)}
+              >
+                <Text style={{ color: '#77c3ec', fontWeight: '500' }}>
+                  Retake
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: '#77c3ec',
+                  padding: 10,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: 10,
+                  borderWidth: 2,
+                  borderColor: 'white',
+                }}
+                onPress={() => setShowCamera(true)}
+              >
+                <Text style={{ color: 'white', fontWeight: '500' }}>
+                  Use Photo
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </>
+      )}
+    </View>
   );
 };
 
 export default VehicleLicenseScannerScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
+  },
+  button: {
+    backgroundColor: 'gray',
+  },
+  backButton: {
+    backgroundColor: 'rgba(0,0,0,0.0)',
+    position: 'absolute',
+    justifyContent: 'center',
+    width: '100%',
+    top: 0,
+    padding: 20,
+  },
+  buttonContainer: {
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    bottom: 0,
+    padding: 20,
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  camButton: {
+    height: 80,
+    width: 80,
+    borderRadius: 40,
+    //ADD backgroundColor COLOR GREY
+    backgroundColor: '#f4f4f4',
+
+    alignSelf: 'center',
+    borderWidth: 4,
+    borderColor: 'white',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    aspectRatio: 9 / 16,
+  },
+});
