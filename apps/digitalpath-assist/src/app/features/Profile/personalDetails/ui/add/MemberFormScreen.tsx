@@ -12,7 +12,7 @@ import {
 import { StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const VehicleLicenseScannerScreen = ({ navigation }) => {
+const MemberFormScreen = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   return (
     <ImageBackground
@@ -31,32 +31,21 @@ const VehicleLicenseScannerScreen = ({ navigation }) => {
             }}
           >
             <Text variant="titleMedium" style={{ color: 'white' }}>
-              Scan
+              Add family member
             </Text>
           </View>
         </View>
       </SafeAreaView>
 
       <View style={{ flex: 1, marginTop: 0, backgroundColor: 'white' }}>
-        <View style={{ alignItems: 'center', marginTop: -35 }}>
-          <Avatar.Image
-            size={60}
-            source={require('../../../../../assets/images/app-logo.png')}
-          />
-        </View>
         <View style={{ flex: 1 }}>
-          <View style={{ alignItems: 'center', marginVertical: 16 }}>
-            <Text variant="titleMedium" style={{ color: 'black' }}>
-              VW Polojj
-            </Text>
-          </View>
-          <Divider />
+          <Text>This is where the form will be</Text>
         </View>
       </View>
     </ImageBackground>
   );
 };
 
-export default VehicleLicenseScannerScreen;
+export default MemberFormScreen;
 
 const styles = StyleSheet.create({});

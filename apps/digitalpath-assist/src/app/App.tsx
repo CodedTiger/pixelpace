@@ -7,13 +7,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './features/Auth/signIn/ui/LoginScreen';
 import ActivateAccountScreen from './features/Auth/activateAccount/ui/ActivateAccountScreen';
 import AccountResetScreen from './features/Auth/passwordReset/ui/AccountReset';
-import DashboardScreen from './features/Home/home/ui/HomeScreen';
+import DashboardScreen from './features/Home/home/ui/home/HomeScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import ChatScreen from './features/Chat/chat/ui/ChatScreen';
+import ChatScreen from './features/Chat/chat/ui/chat/ChatScreen';
 import ProfileScreen from './features/Profile/profile/ui/ProfileScreen';
 import MoreScreen from './features/More/more/ui/MoreScreen';
-import HomeScreen from './features/Home/home/ui/HomeScreen';
+import HomeScreen from './features/Home/home/ui/home/HomeScreen';
 import ClaimScreen from './features/Claims/claims/ui/ClaimsScreen';
 import AboutUsScreen from './features/More/aboutUs/ui/AboutUsScreen';
 import ProductInfoScreen from './features/More/productInfo/ui/ProductInfoScreen';
@@ -23,13 +23,18 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import VehicleLicenseScreen from './features/Profile/vehicleLicense/ui/license/VehicleLicenseScreen';
 import DriveLicenseScreen from './features/Profile/driversLicense/ui/license/DriverLicenseScreen';
 import PoliciesScreen from './features/Profile/policies/ui/policies/PoliciesScreen';
-import PersonalDetailScreen from './features/Profile/personalDetails/ui/PersonalDetailScreen';
+import PersonalDetailScreen from './features/Profile/personalDetails/ui/members/PersonalDetailScreen';
 import VehicleDetailScreen from './features/Profile/vehicleLicense/ui/detail/VehicleDetailScreen';
 import VehicleLicenseScannerScreen from './features/Profile/vehicleLicense/ui/scanner/VehicleLicenseScannerScreen';
 import DriverDetailScreen from './features/Profile/driversLicense/ui/detail/DriverDetailScreen';
 import DriverLicenseScannerScreen from './features/Profile/driversLicense/ui/scanner/DriverLicenseScannerScreen';
 import PolicyCategoryScreen from './features/Profile/policies/ui/category/PolicyCategoryScreen';
 import PolicyDetailScreen from './features/Profile/policies/ui/detail/PolicyDetailScreen';
+import UserDetailScreen from './features/Profile/personalDetails/ui/details/UserDetailScreen';
+import MemberFormScreen from './features/Profile/personalDetails/ui/add/MemberFormScreen';
+import ChatHistoryScreen from './features/Chat/chat/ui/chatHistory/ChatHistoryScreen';
+import LiveChatScreen from './features/Chat/chat/ui/liveChat/LiveChatScreen';
+import EmergencyScreen from './features/Home/home/ui/emergency/EmergencyScreen';
 
 function Dashboard() {
   return (
@@ -98,6 +103,12 @@ export const App = () => {
             name="DriverLicenseScanner"
             component={DriverLicenseScannerScreen}
           />
+          <Stack.Screen name="UserDetail" component={UserDetailScreen} />
+          <Stack.Screen name="AddFamilyMember" component={MemberFormScreen} />
+
+          <Stack.Screen name="UserLiveChat" component={LiveChatScreen} />
+          <Stack.Screen name="UserChatHistory" component={ChatHistoryScreen} />
+          <Stack.Screen name="Emergency" component={EmergencyScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

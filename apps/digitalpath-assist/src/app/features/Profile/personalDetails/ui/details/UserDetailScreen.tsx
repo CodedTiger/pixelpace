@@ -12,7 +12,7 @@ import {
 import { StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const VehicleLicenseScannerScreen = ({ navigation }) => {
+const UserDetailScreen = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   return (
     <ImageBackground
@@ -31,7 +31,7 @@ const VehicleLicenseScannerScreen = ({ navigation }) => {
             }}
           >
             <Text variant="titleMedium" style={{ color: 'white' }}>
-              Scan
+              User Details
             </Text>
           </View>
         </View>
@@ -47,16 +47,29 @@ const VehicleLicenseScannerScreen = ({ navigation }) => {
         <View style={{ flex: 1 }}>
           <View style={{ alignItems: 'center', marginVertical: 16 }}>
             <Text variant="titleMedium" style={{ color: 'black' }}>
-              VW Polojj
+              Thabo Ndebele
             </Text>
           </View>
           <Divider />
+          <List.Item
+            title=" Residential address"
+            description=" 316 Lourie street waterfall view estate midrand"
+          />
+          <Divider />
+          <List.Item
+            title=" Email address"
+            description="hello@arkpixelstudio.co.za"
+          />
+          <Divider />
+          <List.Item title=" Gender" description="Female" />
+          <Divider />
+          <List.Item title="ID number" description="89*************" />
         </View>
       </View>
     </ImageBackground>
   );
 };
 
-export default VehicleLicenseScannerScreen;
+export default UserDetailScreen;
 
 const styles = StyleSheet.create({});

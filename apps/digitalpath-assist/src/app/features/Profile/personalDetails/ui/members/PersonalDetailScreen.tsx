@@ -12,7 +12,7 @@ import {
 import { StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const VehicleLicenseScannerScreen = ({ navigation }) => {
+const PersonalDetailScreen = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   return (
     <ImageBackground
@@ -31,7 +31,7 @@ const VehicleLicenseScannerScreen = ({ navigation }) => {
             }}
           >
             <Text variant="titleMedium" style={{ color: 'white' }}>
-              Scan
+              My personal details
             </Text>
           </View>
         </View>
@@ -40,23 +40,48 @@ const VehicleLicenseScannerScreen = ({ navigation }) => {
       <View style={{ flex: 1, marginTop: 0, backgroundColor: 'white' }}>
         <View style={{ alignItems: 'center', marginTop: -35 }}>
           <Avatar.Image
-            size={60}
+            size={70}
             source={require('../../../../../assets/images/app-logo.png')}
           />
         </View>
         <View style={{ flex: 1 }}>
-          <View style={{ alignItems: 'center', marginVertical: 16 }}>
-            <Text variant="titleMedium" style={{ color: 'black' }}>
-              VW Polojj
-            </Text>
-          </View>
+          <List.Item
+            title={
+              <Text style={{ textAlign: 'center' }} variant="titleMedium">
+                Thabo Ndebele
+              </Text>
+            }
+            description={
+              <Text style={{ textAlign: 'center' }}>072 *** ****</Text>
+            }
+            right={(props) => <List.Icon {...props} icon="chevron-right" />}
+            onPress={() => navigation.navigate('UserDetail')}
+          />
           <Divider />
+
+          <List.Item
+            title="James Ndebele"
+            description={null}
+            right={(props) => <List.Icon {...props} icon="chevron-right" />}
+            onPress={() => navigation.navigate('UserDetail')}
+          />
+          <Divider />
+          <View style={{ padding: 16 }}>
+            <Button
+              icon="plus"
+              mode="contained"
+              onPress={() => navigation.navigate('AddFamilyMember')}
+              style={{ backgroundColor: '#25326e' }}
+            >
+              Add family member
+            </Button>
+          </View>
         </View>
       </View>
     </ImageBackground>
   );
 };
 
-export default VehicleLicenseScannerScreen;
+export default PersonalDetailScreen;
 
 const styles = StyleSheet.create({});

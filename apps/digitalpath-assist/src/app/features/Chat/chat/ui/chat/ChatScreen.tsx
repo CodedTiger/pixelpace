@@ -5,11 +5,11 @@ import { Button, Divider, List, Text, TextInput } from 'react-native-paper';
 import { StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const PersonalDetailScreen = ({ navigation }) => {
+const ChatScreen = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   return (
     <ImageBackground
-      source={require('../../../../assets/images/backgrounds/star-mask.png')}
+      source={require('../../../../../assets/images/backgrounds/star-mask.png')}
       resizeMode="repeat"
       style={{ flex: 1, marginTop: -1 }}
     >
@@ -24,39 +24,29 @@ const PersonalDetailScreen = ({ navigation }) => {
             }}
           >
             <Text variant="titleMedium" style={{ color: 'white' }}>
-              PersonalDetailScreen
+              Chat
             </Text>
           </View>
           <View style={{ padding: 16 }}>
             <Text variant="headlineMedium" style={{ color: 'white' }}>
-              All your important information at your fingertips.
+              Start a chat with a case manager now.
             </Text>
           </View>
         </View>
         <View style={{ flex: 1, marginTop: 0, backgroundColor: 'white' }}>
           <View style={{ flex: 1, marginTop: 0 }}>
             <List.Item
-              title="Personal details"
+              title="Live chat"
               description={null}
               right={(props) => <List.Icon {...props} icon="chevron-right" />}
+              onPress={() => navigation.navigate('UserLiveChat')}
             />
             <Divider />
             <List.Item
-              title="Policies"
+              title="Chat history"
               description={null}
               right={(props) => <List.Icon {...props} icon="chevron-right" />}
-            />
-            <Divider />
-            <List.Item
-              title="Drivers licenses"
-              description={null}
-              right={(props) => <List.Icon {...props} icon="chevron-right" />}
-            />
-            <Divider />
-            <List.Item
-              title="Vehicle licenses"
-              description={null}
-              right={(props) => <List.Icon {...props} icon="chevron-right" />}
+              onPress={() => navigation.navigate('UserChatHistory')}
             />
             <Divider />
           </View>
@@ -66,6 +56,6 @@ const PersonalDetailScreen = ({ navigation }) => {
   );
 };
 
-export default PersonalDetailScreen;
+export default ChatScreen;
 
 const styles = StyleSheet.create({});

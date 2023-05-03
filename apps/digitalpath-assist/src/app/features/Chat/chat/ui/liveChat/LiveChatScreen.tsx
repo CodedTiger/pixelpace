@@ -2,17 +2,17 @@ import { ImageBackground, SafeAreaView, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { Image } from 'react-native';
 import {
-  Avatar,
   Button,
   Divider,
   List,
+  Switch,
   Text,
   TextInput,
 } from 'react-native-paper';
 import { StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const VehicleLicenseScannerScreen = ({ navigation }) => {
+const LiveChatScreen = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   return (
     <ImageBackground
@@ -21,7 +21,7 @@ const VehicleLicenseScannerScreen = ({ navigation }) => {
       style={{ flex: 1, marginTop: -1 }}
     >
       <StatusBar barStyle="light-content" />
-      <SafeAreaView style={{ flex: 0.2, padding: 16 }}>
+      <SafeAreaView style={{ flex: 0.075, padding: 16 }}>
         <View style={{ flex: 1 }}>
           <View
             style={{
@@ -31,25 +31,30 @@ const VehicleLicenseScannerScreen = ({ navigation }) => {
             }}
           >
             <Text variant="titleMedium" style={{ color: 'white' }}>
-              Scan
+              Live Chat
             </Text>
+          </View>
+          <View style={{ alignItems: 'center', marginTop: 0 }}>
+            <Image
+              source={require('../../../../../assets/images/app-logo.png')}
+              style={{ width: 80, height: 80 }}
+            />
           </View>
         </View>
       </SafeAreaView>
-
       <View style={{ flex: 1, marginTop: 0, backgroundColor: 'white' }}>
-        <View style={{ alignItems: 'center', marginTop: -35 }}>
-          <Avatar.Image
-            size={60}
-            source={require('../../../../../assets/images/app-logo.png')}
+        <View style={{ flex: 1, marginTop: 0 }}>
+          <List.Item
+            title="Roadside assist"
+            description="Keep me logged in"
+            right={(props) => <Switch />}
           />
-        </View>
-        <View style={{ flex: 1 }}>
-          <View style={{ alignItems: 'center', marginVertical: 16 }}>
-            <Text variant="titleMedium" style={{ color: 'black' }}>
-              VW Polojj
-            </Text>
-          </View>
+          <Divider />
+          <List.Item
+            title="Version of App"
+            description="3.2.1"
+            onPress={() => navigation.navigate('ProductInfo')}
+          />
           <Divider />
         </View>
       </View>
@@ -57,6 +62,6 @@ const VehicleLicenseScannerScreen = ({ navigation }) => {
   );
 };
 
-export default VehicleLicenseScannerScreen;
+export default LiveChatScreen;
 
 const styles = StyleSheet.create({});
